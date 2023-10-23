@@ -20,4 +20,17 @@ class ClientesControllerTest {
         assertTrue(valor);
 
     }
+
+    @Test
+    void DadAFechaAltaINCorrectaINteresPositivoComisionPositivaCuandoValidarComunEntoncesTrue()  {
+        //Dado
+        Cuenta cu1 = new Ahorro(1, LocalDate.of(2023,10,24), 100.0, 1.1, 0.2);
+        //cuando
+        boolean valor = cu1.validarComun();
+        //entonces
+        assertFalse(valor);
+
+    }
+
+
 }
