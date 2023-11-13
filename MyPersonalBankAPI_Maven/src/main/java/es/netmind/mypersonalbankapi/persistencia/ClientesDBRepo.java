@@ -7,7 +7,9 @@ import es.netmind.mypersonalbankapi.properties.PropertyValues;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
 
 public class ClientesDBRepo implements IClientesRepo {
 
@@ -121,6 +123,117 @@ public class ClientesDBRepo implements IClientesRepo {
     public Cliente addClient(Cliente cliente) throws Exception {
         return null;
     }
+
+    @Override
+    public Empresa addClientEmpresa(Empresa cliente) throws Exception {
+
+        String sql = "INSERT INTO cliente values (?,NULL,?,?,?,?,?,?,?,?,?)";
+
+        try (
+                Connection conn = DriverManager.getConnection(db_url);
+                PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        ) {
+            stmt.setString(1, "Empresa");
+            stmt.setBoolean(2, cliente.isActivo());
+            stmt.setString(3, cliente.getAlta().toString());
+            stmt.setString(4, cliente.getDireccion());
+            stmt.setString(5, cliente.getEmail());
+            stmt.setBoolean(6, cliente.isMoroso());
+            stmt.setString(7, cliente.getNombre());
+            stmt.setString(8, cliente.getCif());
+            String unidades = String.join(",", cliente.getUnidadesNegocio());
+            stmt.setString(9, unidades);
+            stmt.setString(10, null);
+
+            //Para recuperar string separados por , en array
+            unidades.split(",");
+
+            int rows = stmt.executeUpdate();
+
+            ResultSet genKeys = stmt.getGeneratedKeys();
+            if (genKeys.next()) {
+                cliente.setId(genKeys.getInt(1));
+            } else {
+                throw new SQLException("Cliente Empresa creado erroneamente!!!");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new Exception(e);
+        }
+
+        return cliente;
+    }
+
+    @Override
+    public Personal addClientPersonal(Personal cliente) throws Exception {
+
+        String sql = "INSERT INTO cliente values (?,NULL,?,?,?,?,?,?,?,?,?)";
+
+        try (
+                Connection conn = DriverManager.getConnection(db_url);
+                PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        ) {
+            stmt.setString(1, "Personal");
+            stmt.setBoolean(3, cliente.isActivo());
+            stmt.setString(4, cliente.getAlta().toString());
+            stmt.setString(5, cliente.getDireccion());
+            stmt.setString(6, cliente.getEmail());
+            stmt.setBoolean(7, cliente.isMoroso());
+            stmt.setString(8, cliente.getNombre());
+            stmt.setString(9, null);
+            stmt.setString(10, null);
+            stmt.setString(11, cliente.getDni());
+
+            int rows = stmt.executeUpdate();
+
+            ResultSet genKeys = stmt.getGeneratedKeys();
+            if (genKeys.next()) {
+                cliente.setId(genKeys.getInt(2));
+            } else {
+                throw new SQLException("Cliente Personal creado erroneamente!!!");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new Exception(e);
+        }
+
+        return cliente;
+    }
+//    @Override
+//    public Cliente addClient(Cliente cliente) throws Exception {
+//
+//        String sql = "INSERT INTO cliente values (?,NULL,?,?,?,?,?,?,?,?,?)";
+//
+//        try (
+//                Connection conn = DriverManager.getConnection(db_url);
+//                PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//        ) {
+//
+//            stmt.setBoolean(3, cliente.isActivo());
+//            stmt.setString(4, cliente.getAlta().toString());
+//            stmt.setString(5, cliente.getDireccion());
+//            stmt.setString(6, cliente.getEmail());
+//            stmt.setBoolean(7, cliente.isMoroso());
+//            stmt.setString(8, cliente.getNombre());
+//
+//            int rows = stmt.executeUpdate();
+//
+//            ResultSet genKeys = stmt.getGeneratedKeys();
+//            if (genKeys.next()) {
+//                cliente.setId(genKeys.getInt(2));
+//            } else {
+//                throw new SQLException("Cliente creado erroneamente!!!");
+//            }
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            throw new Exception(e);
+//        }
+//
+//        return cliente;
+//    }
 
     @Override
     public boolean deleteClient(Cliente cliente) throws Exception {
