@@ -62,6 +62,9 @@ public class ClientesDBRepo implements IClientesRepo {
                             new String[]{rs.getString("unidades_de_negocio")}
                     );
                     clientes.add(cli);
+                    //Para recuperar string separados por , en array
+                    //String unidades = String.join(",", cliente.getUnidadesNegocio());
+                    //unidades.split(",");
                 }
 
             }
@@ -145,8 +148,6 @@ public class ClientesDBRepo implements IClientesRepo {
             stmt.setString(9, unidades);
             stmt.setString(10, null);
 
-            //Para recuperar string separados por , en array
-            unidades.split(",");
 
             int rows = stmt.executeUpdate();
 
