@@ -30,11 +30,11 @@ public class ClientesDBRepo implements IClientesRepo {
         ) {
 
             while (rs.next()) {
-                System.out.println("dtype: " + rs.getString("dtype"));
-                System.out.println("length dtype: " + rs.getString("dtype").length());
+//                System.out.println("dtype: " + rs.getString("dtype"));
+//                System.out.println("length dtype: " + rs.getString("dtype").length());
                 // if (rs.getString("dtype") == "Personal                       ") {
                 if (rs.getString("dtype").equals("Personal")) {
-                    System.out.println("if 1");
+                    //System.out.println("if 1");
                     Cliente cli = new Personal(
                             rs.getInt("id"),
                             rs.getString("nombre"),
@@ -47,7 +47,7 @@ public class ClientesDBRepo implements IClientesRepo {
                     );
                     clientes.add(cli);
                 } else {
-                    System.out.println("if 2");
+                    // System.out.println("if 2");
                     Cliente cli = new Empresa(
                             rs.getInt("id"),
                             rs.getString("nombre"),
