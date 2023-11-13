@@ -176,21 +176,21 @@ public class ClientesDBRepo implements IClientesRepo {
                 PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         ) {
             stmt.setString(1, "Personal");
-            stmt.setBoolean(3, cliente.isActivo());
-            stmt.setString(4, cliente.getAlta().toString());
-            stmt.setString(5, cliente.getDireccion());
-            stmt.setString(6, cliente.getEmail());
-            stmt.setBoolean(7, cliente.isMoroso());
-            stmt.setString(8, cliente.getNombre());
+            stmt.setBoolean(2, cliente.isActivo());
+            stmt.setString(3, cliente.getAlta().toString());
+            stmt.setString(4, cliente.getDireccion());
+            stmt.setString(5, cliente.getEmail());
+            stmt.setBoolean(6, cliente.isMoroso());
+            stmt.setString(7, cliente.getNombre());
+            stmt.setString(8, null);
             stmt.setString(9, null);
-            stmt.setString(10, null);
-            stmt.setString(11, cliente.getDni());
+            stmt.setString(10, cliente.getDni());
 
             int rows = stmt.executeUpdate();
 
             ResultSet genKeys = stmt.getGeneratedKeys();
             if (genKeys.next()) {
-                cliente.setId(genKeys.getInt(2));
+                cliente.setId(genKeys.getInt(1));
             } else {
                 throw new SQLException("Cliente Personal creado erroneamente!!!");
             }

@@ -3,6 +3,7 @@ package es.netmind.mypersonalbankapi.persistencia;
 
 import es.netmind.mypersonalbankapi.modelos.clientes.Cliente;
 import es.netmind.mypersonalbankapi.modelos.clientes.Empresa;
+import es.netmind.mypersonalbankapi.modelos.clientes.Personal;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -59,16 +60,16 @@ class ClientesDBRepoTest {
         System.out.println("Id insertado: "+cliemp.getId());
     }
 
-//    @Test
-//    void dadosClientPersonal_cuandoinsertarEnDB_entoncesIdValido() throws Exception {
-//        Empresa cliemp = new Empresa(null,"Servicios Informatico SL", "si@s.com", "Calle SI 3", LocalDate.now(), true, false, "J12345678", new String[]{"Dev", "Marketing"});
-//
-//        repo.addClientEmpresa(cliemp);
-//
-//        System.out.println(cliemp);
-//
-//        assertThat(cliemp.getId(), greaterThan(0));
-//        System.out.println("Id insertado: "+cliemp.getId());
-//    }
+    @Test
+    void dadosClientPersonal_cuandoinsertarEnDB_entoncesIdValido() throws Exception {
+        Personal cliper = new Personal(null, "Juan Juanez", "jj@j.com", "Calle JJ 1", LocalDate.now(), true, false, "12345678J");
+
+        repo.addClientPersonal(cliper);
+
+        System.out.println(cliper);
+
+        assertThat(cliper.getId(), greaterThan(0));
+        System.out.println("Id insertado: "+cliper.getId());
+    }
 
 }
