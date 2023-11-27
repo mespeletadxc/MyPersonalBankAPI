@@ -4,21 +4,23 @@ import es.netmind.mypersonalbankapi.modelos.clientes.Cliente;
 import es.netmind.mypersonalbankapi.modelos.clientes.Empresa;
 import es.netmind.mypersonalbankapi.modelos.clientes.Personal;
 import es.netmind.mypersonalbankapi.properties.PropertyValues;
+import lombok.Setter;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+@Setter
 public class ClientesDBRepo implements IClientesRepo {
 
-    private static String db_url = null;
+    //private static String db_url = null;
+    private String db_url = null;
 
-    public ClientesDBRepo() throws Exception {
+    /*public ClientesDBRepo() throws Exception {
         PropertyValues props = new PropertyValues();
         db_url = props.getPropValues().getProperty("db_url");
-    }
+    }*/
 
     @Override
     public List<Cliente> getAll() throws Exception {
