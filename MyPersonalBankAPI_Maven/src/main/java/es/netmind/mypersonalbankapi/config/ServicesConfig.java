@@ -1,6 +1,10 @@
 package es.netmind.mypersonalbankapi.config;
 
 
+import es.netmind.mypersonalbankapi.controladores.ClientesController;
+import es.netmind.mypersonalbankapi.controladores.IClientesController;
+import es.netmind.mypersonalbankapi.modelos.clientes.Cliente;
+import es.netmind.mypersonalbankapi.persistencia.IClientesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,13 +12,18 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ServicesConfig {
     /*@Autowired
-    ICompraRepository compraRepo;
+    ICompraRepository compraRepo;*/
+
+    @Autowired
+    private IClientesRepo repoCli;
 
     @Bean
-    public IShoppingCart getShoppingCart() {
-        ShoppingCart cart = new ShoppingCart();
-        cart.setRepoCompras(compraRepo);
-        return cart;
-    }*/
+    public IClientesController getClienterController() {
+        ClientesController cli = new ClientesController();
+        cli.setClientesRepo(repoCli);
+        return cli;
+    }
+
+
 
 }
