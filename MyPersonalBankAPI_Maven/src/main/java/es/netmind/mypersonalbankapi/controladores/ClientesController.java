@@ -5,14 +5,21 @@ import es.netmind.mypersonalbankapi.modelos.clientes.Cliente;
 import es.netmind.mypersonalbankapi.modelos.prestamos.Prestamo;
 import es.netmind.mypersonalbankapi.persistencia.*;
 import es.netmind.mypersonalbankapi.utils.ClientesUtils;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.List;
+@Setter
+@Service
+public class ClientesController implements IClientesController{
 
-public class ClientesController {
+    @Autowired
+    private static IClientesRepo clientesRepo;
 
-    private static IClientesRepo clientesRepo = ClientesInMemoryRepo.getInstance();
+   // private static IClientesRepo clientesRepo = ClientesInMemoryRepo.getInstance();
     private static ICuentasRepo cuentasRepo = CuentasInMemoryRepo.getInstance();
     private static IPrestamosRepo prestamosRepo = PrestamosInMemoryRepo.getInstance();
 
