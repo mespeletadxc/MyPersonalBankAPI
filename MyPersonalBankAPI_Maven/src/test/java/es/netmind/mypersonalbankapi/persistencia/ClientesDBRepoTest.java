@@ -36,7 +36,7 @@ class ClientesDBRepoTest {
 
     @Test
     void dadoCliente_cuandoExisteClienteNoEnDB_entoncesNOK() throws Exception {
-        Cliente cli = repo.getClientById(4);
+        Cliente cli = repo.getClientById(20);
         assertTrue(cli == null);
     }
 
