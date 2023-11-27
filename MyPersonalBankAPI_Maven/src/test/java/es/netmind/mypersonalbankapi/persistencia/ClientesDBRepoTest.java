@@ -10,6 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,13 +21,14 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ClientesDBRepoTest {
+    @Autowired
     private IClientesRepo repo;
 
-    @BeforeEach
+    /*@BeforeEach
     void setUp() throws Exception {
 //        repo = new UsuarioInMemoryRepository();
         repo = new ClientesDBRepo();
-    }
+    }*/
 
     @Test
     void dadoCliente_cuandoExisteClienteEnDB_entoncesOK() throws Exception {
