@@ -13,13 +13,17 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.List;
 @Setter
-@Service
+//@Service
 public class ClientesController implements IClientesController{
 
-    @Autowired
+    //@Autowired
     private static IClientesRepo clientesRepo;
 
-   // private static IClientesRepo clientesRepo = ClientesInMemoryRepo.getInstance();
+    public static void setClientesRepo(IClientesRepo clientesRepo) {
+        ClientesController.clientesRepo = clientesRepo;
+    }
+
+    // private static IClientesRepo clientesRepo = ClientesInMemoryRepo.getInstance();
     private static ICuentasRepo cuentasRepo = CuentasInMemoryRepo.getInstance();
     private static IPrestamosRepo prestamosRepo = PrestamosInMemoryRepo.getInstance();
 
