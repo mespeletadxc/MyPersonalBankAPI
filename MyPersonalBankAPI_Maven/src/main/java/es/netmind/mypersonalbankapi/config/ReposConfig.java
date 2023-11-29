@@ -29,11 +29,21 @@ public class ReposConfig {
 
 
     @Bean
+    @Profile("default")
     public IClientesRepo createIClientesRepo() throws Exception {
         System.out.println("usando clientesDBRepo...");
         ClientesDBRepo repo = new ClientesDBRepo();
 
         repo.setDb_url(connUrl);
+        return repo;
+    }
+
+    @Bean
+    @Profile("inMemory")
+    public ClientesInMemoryRepo createClientesinMemoryRepo() throws Exception {
+        System.out.println("usando clientesinMemoryRepo...");
+        ClientesInMemoryRepo repo = new ClientesInMemoryRepo();
+
         return repo;
     }
 

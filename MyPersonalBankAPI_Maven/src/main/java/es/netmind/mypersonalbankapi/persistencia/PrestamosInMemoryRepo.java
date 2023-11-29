@@ -18,7 +18,7 @@ public class PrestamosInMemoryRepo implements IPrestamosRepo {
     @Autowired
     private IClientesRepo clientesRepo;
 
-    private PrestamosInMemoryRepo() {
+    public PrestamosInMemoryRepo() {
         prestamos = new ArrayList<>();
         try {
             prestamos.add(new Prestamo(1, LocalDate.now(), 1000.0, 1000.0, 4, 2, false, false, 2));

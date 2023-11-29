@@ -23,6 +23,7 @@ class PrestamosControllerTest {
 
     @Test
     void mostrarLista() {
+        service.mostrarLista(1);
     }
 
     @Test

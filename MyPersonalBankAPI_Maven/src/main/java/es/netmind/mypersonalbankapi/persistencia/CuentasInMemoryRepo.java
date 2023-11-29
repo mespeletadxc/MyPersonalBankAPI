@@ -24,7 +24,7 @@ public class CuentasInMemoryRepo implements ICuentasRepo {
 //    private ICuentasRepo cuentasRepo;
 
 
-    private CuentasInMemoryRepo() {
+    public CuentasInMemoryRepo() {
         cuentas = new ArrayList<>();
         try {
             cuentas.add(new Ahorro(1, LocalDate.now(), 100.0, 1.1, 0.2));

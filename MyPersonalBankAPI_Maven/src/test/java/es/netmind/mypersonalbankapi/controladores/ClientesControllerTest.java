@@ -30,4 +30,9 @@ class ClientesControllerTest {
         service.mostrarLista();
     }
 
+    @Test
+    void mostrarDetalle(){
+        service.mostrarDetalle(1);
+    }
+
 }
