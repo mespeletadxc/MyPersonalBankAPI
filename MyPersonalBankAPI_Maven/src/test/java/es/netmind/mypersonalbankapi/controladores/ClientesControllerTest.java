@@ -11,6 +11,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+
+import java.time.Instant;
 
 
 @ExtendWith(SpringExtension.class)
@@ -33,6 +37,11 @@ class ClientesControllerTest {
     @Test
     void mostrarDetalle(){
         service.mostrarDetalle(1);
+    }
+
+    @Test
+    void actualizar() {
+        service.actualizar(1, new String[]{"a","nuevo@email","b", String.valueOf(LocalDate.now()),"c","d,e","",""});
     }
 
 }
