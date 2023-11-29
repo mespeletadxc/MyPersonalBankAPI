@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClientesInMemoryRepo implements IClientesRepo {
-    private static ClientesInMemoryRepo instance;
-    private final static List<Cliente> clientes;
+    private ClientesInMemoryRepo instance;
+    private final List<Cliente> clientes;
 
-    static {
+    {
         clientes = new ArrayList<>();
         try {
             clientes.add(new Personal(1, "Juan Juanez", "jj@j.com", "Calle JJ 1", LocalDate.now(), true, false, "12345678J"));
@@ -29,7 +29,7 @@ public class ClientesInMemoryRepo implements IClientesRepo {
     private ClientesInMemoryRepo() {
     }
 
-    public static ClientesInMemoryRepo getInstance() {
+    public ClientesInMemoryRepo getInstance() {
         if (instance == null) instance = new ClientesInMemoryRepo();
         return instance;
     }

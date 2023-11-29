@@ -13,21 +13,24 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.List;
 @Setter
-//@Service
-public class ClientesController implements IClientesController{
+@Service
+public class ClientesController implements IClientesController {
 
+    @Autowired
+    private IClientesRepo clientesRepo;
+
+//    public void setClientesRepo(IClientesRepo clientesRepo) {
+//        ClientesController.clientesRepo = clientesRepo;
+//    }
+
+    // private IClientesRepo clientesRepo = ClientesInMemoryRepo.getInstance();
     //@Autowired
-    private static IClientesRepo clientesRepo;
+    private ICuentasRepo cuentasRepo;
+    //@Autowired
+    private IPrestamosRepo prestamosRepo;
 
-    public static void setClientesRepo(IClientesRepo clientesRepo) {
-        ClientesController.clientesRepo = clientesRepo;
-    }
-
-    // private static IClientesRepo clientesRepo = ClientesInMemoryRepo.getInstance();
-    private static ICuentasRepo cuentasRepo = CuentasInMemoryRepo.getInstance();
-    private static IPrestamosRepo prestamosRepo = PrestamosInMemoryRepo.getInstance();
-
-    public static void mostrarLista() throws Exception {
+    @Override
+    public void mostrarLista() throws Exception {
         System.out.println("\nLista de clientes:");
         System.out.println("───────────────────────────────────");
         List<Cliente> clientes = clientesRepo.getAll();
@@ -45,7 +48,8 @@ public class ClientesController implements IClientesController{
         }
     }
 
-    public static void mostrarDetalle(Integer uid) {
+    @Override
+    public void mostrarDetalle(Integer uid) {
         System.out.println("\nDetalle de cliente: " + uid);
         System.out.println("───────────────────────────────────");
 
@@ -60,7 +64,8 @@ public class ClientesController implements IClientesController{
 
     }
 
-    public static void add(String[] args) {
+    @Override
+    public void add(String[] args) {
         System.out.println("\nAñadiendo cliente");
         System.out.println("───────────────────────────────────");
         try {
@@ -79,7 +84,8 @@ public class ClientesController implements IClientesController{
 
     }
 
-    public static void eliminar(Integer uid) {
+    @Override
+    public void eliminar(Integer uid) {
         System.out.println("\nBorrando cliente: " + uid);
         System.out.println("───────────────────────────────────");
 
@@ -98,7 +104,8 @@ public class ClientesController implements IClientesController{
 
     }
 
-    public static void actualizar(Integer uid, String[] args) {
+    @Override
+    public void actualizar(Integer uid, String[] args) {
         System.out.println("\nActualizando cliente: " + uid);
         System.out.println("───────────────────────────────────");
 
@@ -121,7 +128,8 @@ public class ClientesController implements IClientesController{
 
     }
 
-    public static void evaluarPrestamo(Integer uid, Double cantidad) {
+    @Override
+    public void evaluarPrestamo(Integer uid, Double cantidad) {
         System.out.println("\nEvaluando préstamos de " + cantidad + " EUR para el  cliente: " + uid);
         System.out.println("───────────────────────────────────");
 

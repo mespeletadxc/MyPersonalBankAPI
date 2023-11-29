@@ -1,18 +1,26 @@
 package es.netmind.mypersonalbankapi.persistencia;
 
+import es.netmind.mypersonalbankapi.config.SpringConfig;
 import es.netmind.mypersonalbankapi.modelos.clientes.Cliente;
 import es.netmind.mypersonalbankapi.modelos.clientes.Personal;
 import es.netmind.mypersonalbankapi.persistencia.*;
 import static es.netmind.mypersonalbankapi.persistencia.ClientesInMemoryRepo.*;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = {SpringConfig.class})
 class ClientesInMemoryRepoTest {
-    private static IClientesRepo clientesRepo = ClientesInMemoryRepo.getInstance();
+    @Autowired
+    private IClientesRepo clientesRepo;
     @Test
     void DadoTodosPArametrosCorrectosCuandoAddClientEntoncesTrue() throws Exception {
 

@@ -3,7 +3,6 @@ package es.netmind.mypersonalbankapi.config;
 
 import es.netmind.mypersonalbankapi.controladores.ClientesController;
 import es.netmind.mypersonalbankapi.controladores.IClientesController;
-import es.netmind.mypersonalbankapi.modelos.clientes.Cliente;
 import es.netmind.mypersonalbankapi.persistencia.IClientesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

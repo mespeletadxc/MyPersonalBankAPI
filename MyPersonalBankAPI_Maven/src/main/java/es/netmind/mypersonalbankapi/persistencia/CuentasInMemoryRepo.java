@@ -6,19 +6,23 @@ import es.netmind.mypersonalbankapi.modelos.clientes.Cliente;
 import es.netmind.mypersonalbankapi.modelos.cuentas.Ahorro;
 import es.netmind.mypersonalbankapi.modelos.cuentas.Corriente;
 import es.netmind.mypersonalbankapi.modelos.cuentas.Cuenta;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.io.InvalidObjectException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-
+@Repository
 public class CuentasInMemoryRepo implements ICuentasRepo {
-    private static CuentasInMemoryRepo instance;
-    private static List<Cuenta> cuentas;
-    private static IClientesRepo clientesRepo = ClientesInMemoryRepo.getInstance();
+    //private CuentasInMemoryRepo instance;
+    private List<Cuenta> cuentas;
+    @Autowired
+    private IClientesRepo clientesRepo;
 
-    static {
+
+    private CuentasInMemoryRepo() {
         cuentas = new ArrayList<>();
         try {
             cuentas.add(new Ahorro(1, LocalDate.now(), 100.0, 1.1, 0.2));
@@ -38,13 +42,10 @@ public class CuentasInMemoryRepo implements ICuentasRepo {
         }
     }
 
-    private CuentasInMemoryRepo() {
-    }
-
-    public static CuentasInMemoryRepo getInstance() {
-        if (instance == null) instance = new CuentasInMemoryRepo();
-        return instance;
-    }
+//    public CuentasInMemoryRepo getInstance() {
+//        if (instance == null) instance = new CuentasInMemoryRepo();
+//        return instance;
+//    }
 
     @Override
     public List<Cuenta> getAll() {

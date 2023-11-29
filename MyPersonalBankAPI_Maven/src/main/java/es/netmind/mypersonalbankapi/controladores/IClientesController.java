@@ -1,13 +1,21 @@
 package es.netmind.mypersonalbankapi.controladores;
 
 public interface IClientesController {
+    void mostrarLista() throws Exception;
 
-    static void mostrarLista(){}
-    static void mostrarDetalle(Integer uid){}
-    static void add(String[] args){}
-    static void eliminar(Integer uid){}
-    static void actualizar(Integer uid, String[] args){}
-    static void evaluarPrestamo(Integer uid, Double cantidad){}
+    void mostrarDetalle(Integer uid);
 
+    void add(String[] args);
 
+    void eliminar(Integer uid);
+
+    void actualizar(Integer uid, String[] args);
+
+    void evaluarPrestamo(Integer uid, Double cantidad);
+
+    void setClientesRepo(es.netmind.mypersonalbankapi.persistencia.IClientesRepo clientesRepo);
+
+    void setCuentasRepo(es.netmind.mypersonalbankapi.persistencia.ICuentasRepo cuentasRepo);
+
+    void setPrestamosRepo(es.netmind.mypersonalbankapi.persistencia.IPrestamosRepo prestamosRepo);
 }

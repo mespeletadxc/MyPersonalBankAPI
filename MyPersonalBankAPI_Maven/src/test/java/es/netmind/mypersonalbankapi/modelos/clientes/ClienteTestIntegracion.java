@@ -1,19 +1,27 @@
 package es.netmind.mypersonalbankapi.modelos.clientes;
 
+import es.netmind.mypersonalbankapi.config.SpringConfig;
 import es.netmind.mypersonalbankapi.modelos.cuentas.Ahorro;
 import es.netmind.mypersonalbankapi.modelos.cuentas.Cuenta;
 import es.netmind.mypersonalbankapi.modelos.prestamos.Prestamo;
 import es.netmind.mypersonalbankapi.persistencia.ClientesInMemoryRepo;
 import es.netmind.mypersonalbankapi.persistencia.IClientesRepo;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = {SpringConfig.class})
 class ClienteTestIntegracion {
-     private static IClientesRepo clientesRepo = ClientesInMemoryRepo.getInstance();
+    @Autowired
+     private static IClientesRepo clientesRepo;
     @Test
     void DadoUnPrestamoCorrectoQueCumpleCondicionesCuandoEvaluarSolicitudPrestamoEntoncesConcedidoTrue() throws Exception{
         Prestamo pr1 = new Prestamo(1, LocalDate.now(), 1000.0, 1000.0, 4, 2, false, false, 2);

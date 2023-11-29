@@ -4,6 +4,7 @@ import es.netmind.mypersonalbankapi.exceptions.ErrorCode;
 import es.netmind.mypersonalbankapi.exceptions.PrestamoException;
 import es.netmind.mypersonalbankapi.modelos.clientes.Cliente;
 import es.netmind.mypersonalbankapi.modelos.prestamos.Prestamo;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,11 +12,12 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class PrestamosInMemoryRepo implements IPrestamosRepo {
-    private static PrestamosInMemoryRepo instance;
-    private static List<Prestamo> prestamos;
-    private static IClientesRepo clientesRepo = ClientesInMemoryRepo.getInstance();
+    //private PrestamosInMemoryRepo instance;
+    private List<Prestamo> prestamos;
+    @Autowired
+    private IClientesRepo clientesRepo;
 
-    static {
+    private PrestamosInMemoryRepo() {
         prestamos = new ArrayList<>();
         try {
             prestamos.add(new Prestamo(1, LocalDate.now(), 1000.0, 1000.0, 4, 2, false, false, 2));
@@ -31,13 +33,11 @@ public class PrestamosInMemoryRepo implements IPrestamosRepo {
         }
     }
 
-    private PrestamosInMemoryRepo() {
-    }
-
-    public static PrestamosInMemoryRepo getInstance() {
-        if (instance == null) instance = new PrestamosInMemoryRepo();
-        return instance;
-    }
+//    public PrestamosInMemoryRepo getInstance() {
+//
+//        if (instance == null) instance = new PrestamosInMemoryRepo();
+//        return instance;
+//    }
 
     @Override
     public List<Prestamo> getAll() {

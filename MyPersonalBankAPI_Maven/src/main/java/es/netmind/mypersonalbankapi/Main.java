@@ -7,7 +7,8 @@ import es.netmind.mypersonalbankapi.controladores.PrestamosController;
 import java.util.Arrays;
 /* CAMBIO PRUEBA */
 public class Main {
-    public static void main(String[] args) {
+    /*
+    public void main(String[] args) {
         System.out.println("╔════════════════════════╗");
         System.out.println("║  MY PERSONAL BANK API  ║");
         System.out.println("╚════════════════════════╝");
@@ -27,7 +28,7 @@ public class Main {
 
     }
 
-    private static void procesarArgumentos(String[] args) throws Exception {
+    private void procesarArgumentos(String[] args) throws Exception {
         int argsLength = args.length;
         String arg0 = args[0].toLowerCase();
         String arg1 = args[1].toLowerCase();
@@ -48,7 +49,7 @@ public class Main {
 
     }
 
-    private static void procesarArgumentosClientes(String[] args) throws Exception {
+    private void procesarArgumentosClientes(String[] args) throws Exception {
         int argsLength = args.length;
         String arg1 = args[1].toLowerCase();
 
@@ -60,7 +61,7 @@ public class Main {
         else if (argsLength == 2) ClientesController.mostrarDetalle(Integer.valueOf(arg1));
     }
 
-    private static void procesarArgumentosCuentas(String[] args) {
+    private void procesarArgumentosCuentas(String[] args) {
         int argsLength = args.length;
         int uid = Integer.valueOf(args[1]);
         if (argsLength == 3) CuentasController.mostrarLista(uid);
@@ -74,7 +75,7 @@ public class Main {
         else mostrarInstrucciones();
     }
 
-    private static void procesarArgumentosPrestamos(String[] args) {
+    private void procesarArgumentosPrestamos(String[] args) {
         int argsLength = args.length;
         int uid = Integer.valueOf(args[1]);
         if (argsLength == 3) PrestamosController.mostrarLista(uid);
@@ -88,7 +89,7 @@ public class Main {
         else mostrarInstrucciones();
     }
 
-    private static void procesarArgumentosEvaluacionPrestamo(String[] args) {
+    private void procesarArgumentosEvaluacionPrestamo(String[] args) {
         int argsLength = args.length;
         int uid = Integer.valueOf(args[1]);
         Double cantidad = argsLength >= 4 ? Double.valueOf(args[3]) : 0;
@@ -97,7 +98,7 @@ public class Main {
         } else mostrarInstrucciones();
     }
 
-    private static void mostrarInstrucciones() {
+    private void mostrarInstrucciones() {
         System.out.println("⚠ LAS OPCIONES DEL PROGRAMA SON LAS SIGUIENTES: ⚠");
 
         System.out.println("\nCLIENTES:");
@@ -124,4 +125,7 @@ public class Main {
         System.out.println("\nEVALUAR PRÉSTAMO:");
         System.out.println("clients {uid} loan-evaluation {cantidad > 0}");
     }
+
+
+     */
 }

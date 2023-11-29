@@ -18,16 +18,16 @@ import java.util.List;
 @Setter
 public class CuentasController{
 
-
-    private static ICuentasRepo cuentasRepo = CuentasInMemoryRepo.getInstance();
+    //@Autowired
+    private ICuentasRepo cuentasRepo;
     @Autowired
-    private static IClientesRepo clientesRepo;
-    public static void setClientesRepo(IClientesRepo clientesRepo) {
-        ClientesController.setClientesRepo(clientesRepo);
-    }
-    //private static IClientesRepo clientesRepo = ClientesInMemoryRepo.getInstance();
+    private IClientesRepo clientesRepo;
+//    public void setClientesRepo(IClientesRepo clientesRepo) {
+//        ClientesController.setClientesRepo(clientesRepo);
+//    }
+    //private IClientesRepo clientesRepo = ClientesInMemoryRepo.getInstance();
 
-    public static void mostrarLista(Integer uid) {
+    public void mostrarLista(Integer uid) {
         System.out.println("\nLista de cuentas del cliente: " + uid);
         System.out.println("───────────────────────────────────");
 
@@ -40,7 +40,7 @@ public class CuentasController{
         }
     }
 
-    public static void mostrarDetalle(Integer uid, Integer aid) {
+    public void mostrarDetalle(Integer uid, Integer aid) {
         System.out.println("\nDetalle de cuenta: " + aid + ", del cliente: " + uid);
         System.out.println("───────────────────────────────────");
 
@@ -52,7 +52,7 @@ public class CuentasController{
         }
     }
 
-    public static void eliminar(Integer uid, Integer aid) {
+    public void eliminar(Integer uid, Integer aid) {
         System.out.println("\nBorrando cuenta: " + aid + ", para cliente: " + uid);
         System.out.println("───────────────────────────────────");
 
@@ -73,14 +73,14 @@ public class CuentasController{
 
     }
 
-    public static void add(Integer uid, String[] args) {
+    public void add(Integer uid, String[] args) {
         System.out.println("uid: " + uid);
         for (String arg : args) {
             System.out.println(arg);
         }
     }
 
-    public static void actualizar(Integer uid, Integer aid, String[] args) {
+    public void actualizar(Integer uid, Integer aid, String[] args) {
         System.out.println("uid: " + uid);
         System.out.println("aid: " + aid);
         for (String arg : args) {

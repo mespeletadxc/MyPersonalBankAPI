@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 public class ClientesDBRepo implements IClientesRepo {
 
-    //private static String db_url = null;
+    //private String db_url = null;
     private String db_url = null;
 
     /*public ClientesDBRepo() throws Exception {
