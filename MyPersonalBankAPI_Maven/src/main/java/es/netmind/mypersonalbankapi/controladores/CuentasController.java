@@ -7,12 +7,25 @@ import es.netmind.mypersonalbankapi.persistencia.ClientesInMemoryRepo;
 import es.netmind.mypersonalbankapi.persistencia.CuentasInMemoryRepo;
 import es.netmind.mypersonalbankapi.persistencia.IClientesRepo;
 import es.netmind.mypersonalbankapi.persistencia.ICuentasRepo;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import es.netmind.mypersonalbankapi.controladores.ClientesController;
 
 import java.util.List;
 
-public class CuentasController {
+@Service
+@Setter
+public class CuentasController{
+
+
     private static ICuentasRepo cuentasRepo = CuentasInMemoryRepo.getInstance();
-    private static IClientesRepo clientesRepo = ClientesInMemoryRepo.getInstance();
+    @Autowired
+    private static IClientesRepo clientesRepo;
+    public static void setClientesRepo(IClientesRepo clientesRepo) {
+        ClientesController.setClientesRepo(clientesRepo);
+    }
+    //private static IClientesRepo clientesRepo = ClientesInMemoryRepo.getInstance();
 
     public static void mostrarLista(Integer uid) {
         System.out.println("\nLista de cuentas del cliente: " + uid);
