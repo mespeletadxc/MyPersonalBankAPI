@@ -13,7 +13,7 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.List;
 @Setter
-@Service
+//@Service
 public class ClientesController implements IClientesController {
 
     @Autowired
@@ -24,9 +24,9 @@ public class ClientesController implements IClientesController {
 //    }
 
     // private IClientesRepo clientesRepo = ClientesInMemoryRepo.getInstance();
-    //@Autowired
+    @Autowired
     private ICuentasRepo cuentasRepo;
-    //@Autowired
+    @Autowired
     private IPrestamosRepo prestamosRepo;
 
     @Override

@@ -8,15 +8,18 @@ import es.netmind.mypersonalbankapi.persistencia.IClientesRepo;
 import es.netmind.mypersonalbankapi.persistencia.IPrestamosRepo;
 import es.netmind.mypersonalbankapi.persistencia.PrestamosInMemoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class PrestamosController {
-    //@Autowired
+@Service
+public class PrestamosController implements IPrestamosController {
+    @Autowired
     private IPrestamosRepo prestamosRepo;
      @Autowired
     private IClientesRepo clientesRepo;
 
+    @Override
     public void mostrarLista(Integer uid) {
         System.out.println("\nLista de prestamos del cliente: " + uid);
         System.out.println("───────────────────────────────────");
@@ -32,6 +35,7 @@ public class PrestamosController {
         }
     }
 
+    @Override
     public void mostrarDetalle(Integer uid, Integer lid) {
         System.out.println("\nDetalle de prestamo: " + lid + ", del cliente: " + uid);
         System.out.println("───────────────────────────────────");
@@ -46,6 +50,7 @@ public class PrestamosController {
         }
     }
 
+    @Override
     public void eliminar(Integer uid, Integer lid) {
         System.out.println("\nBorrando prestamo: " + lid + ", para cliente: " + uid);
         System.out.println("───────────────────────────────────");
@@ -67,6 +72,7 @@ public class PrestamosController {
 
     }
 
+    @Override
     public void add(Integer uid, String[] args) {
         System.out.println("uid: " + uid);
         for (String arg : args) {
@@ -75,6 +81,7 @@ public class PrestamosController {
         // TODO
     }
 
+    @Override
     public void actualizar(Integer uid, Integer lid, String[] args) {
         System.out.println("uid: " + uid);
         System.out.println("lid: " + lid);

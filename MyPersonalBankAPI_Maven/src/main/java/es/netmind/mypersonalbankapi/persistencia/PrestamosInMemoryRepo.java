@@ -5,12 +5,13 @@ import es.netmind.mypersonalbankapi.exceptions.PrestamoException;
 import es.netmind.mypersonalbankapi.modelos.clientes.Cliente;
 import es.netmind.mypersonalbankapi.modelos.prestamos.Prestamo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-
+@Repository
 public class PrestamosInMemoryRepo implements IPrestamosRepo {
     //private PrestamosInMemoryRepo instance;
     private List<Prestamo> prestamos;

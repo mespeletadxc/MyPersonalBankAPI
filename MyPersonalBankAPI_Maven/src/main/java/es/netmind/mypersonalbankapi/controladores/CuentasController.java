@@ -16,9 +16,9 @@ import java.util.List;
 
 @Service
 @Setter
-public class CuentasController{
+public class CuentasController implements ICuentasController {
 
-    //@Autowired
+    @Autowired
     private ICuentasRepo cuentasRepo;
     @Autowired
     private IClientesRepo clientesRepo;
@@ -27,6 +27,7 @@ public class CuentasController{
 //    }
     //private IClientesRepo clientesRepo = ClientesInMemoryRepo.getInstance();
 
+    @Override
     public void mostrarLista(Integer uid) {
         System.out.println("\nLista de cuentas del cliente: " + uid);
         System.out.println("───────────────────────────────────");
@@ -40,6 +41,7 @@ public class CuentasController{
         }
     }
 
+    @Override
     public void mostrarDetalle(Integer uid, Integer aid) {
         System.out.println("\nDetalle de cuenta: " + aid + ", del cliente: " + uid);
         System.out.println("───────────────────────────────────");
@@ -52,6 +54,7 @@ public class CuentasController{
         }
     }
 
+    @Override
     public void eliminar(Integer uid, Integer aid) {
         System.out.println("\nBorrando cuenta: " + aid + ", para cliente: " + uid);
         System.out.println("───────────────────────────────────");
@@ -73,6 +76,7 @@ public class CuentasController{
 
     }
 
+    @Override
     public void add(Integer uid, String[] args) {
         System.out.println("uid: " + uid);
         for (String arg : args) {
@@ -80,6 +84,7 @@ public class CuentasController{
         }
     }
 
+    @Override
     public void actualizar(Integer uid, Integer aid, String[] args) {
         System.out.println("uid: " + uid);
         System.out.println("aid: " + aid);

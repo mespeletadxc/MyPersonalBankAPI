@@ -5,16 +5,21 @@ import es.netmind.mypersonalbankapi.exceptions.ErrorCode;
 import es.netmind.mypersonalbankapi.modelos.clientes.Cliente;
 import es.netmind.mypersonalbankapi.modelos.clientes.Empresa;
 import es.netmind.mypersonalbankapi.modelos.clientes.Personal;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+//@Repository
 public class ClientesInMemoryRepo implements IClientesRepo {
     private ClientesInMemoryRepo instance;
     private final List<Cliente> clientes;
+//    @Autowired
+//    private IClientesRepo clientesRepo;
 
-    {
+    private ClientesInMemoryRepo() {
         clientes = new ArrayList<>();
         try {
             clientes.add(new Personal(1, "Juan Juanez", "jj@j.com", "Calle JJ 1", LocalDate.now(), true, false, "12345678J"));
@@ -24,9 +29,6 @@ public class ClientesInMemoryRepo implements IClientesRepo {
         } catch (Exception e) {
             System.out.println("⚠ Error al crear clientes: " + e.getMessage());
         }
-    }
-
-    private ClientesInMemoryRepo() {
     }
 
     public ClientesInMemoryRepo getInstance() {
