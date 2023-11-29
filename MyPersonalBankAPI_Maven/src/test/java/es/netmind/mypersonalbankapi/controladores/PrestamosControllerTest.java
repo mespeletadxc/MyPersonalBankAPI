@@ -28,6 +28,7 @@ class PrestamosControllerTest {
 
     @Test
     void mostrarDetalle() {
+        service.mostrarDetalle(1, 1);
     }
 
     @Test
