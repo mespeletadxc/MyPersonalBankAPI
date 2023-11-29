@@ -19,6 +19,7 @@ public class ServicesConfig {
 
     @Bean
     public IClientesController getClienterController() {
+        System.out.println("usando IClientesController...");
         ClientesController cli = new ClientesController();
         cli.setClientesRepo(repoCli);
         return cli;
